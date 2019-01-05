@@ -1,0 +1,57 @@
+/**
+ * This program reads lines of text from the user, encodes them using the 
+ * trivial "Rot13" substitution cipher, and then prints out the encoded lines.
+ **/
+
+import java.util.Scanner;
+
+public class Rot13 {
+	/**
+	 * This method performs the Rot13 substitution cipher. It "rotates" each letter
+	 * 13 places through the alphabet. Since the Latin alphabet has 26 letters, this
+	 * method both encodes and decodes.
+	 **/
+	 String roted = "" ;
+	 String text = "" ;
+	 int l = 0 ;
+	 
+	public static char rot(char ch) {
+
+		if (Character.isLowerCase(ch)) {
+			if (ch <= 'm') {
+				ch = (char) (ch + 13);
+			} else {
+				ch = (char) (ch - 13);
+			}
+		} else if (Character.isUpperCase(ch)) {
+			if (ch <= 'M')
+				ch = (char) (ch + 13);
+			else
+				ch = (char) (ch - 13);
+
+		}
+		return ch;
+	}
+	
+	
+
+	public static void main(String[] args) {
+		System.out.println("Text >> ");
+		
+		Scanner sn = new Scanner(System.in);
+		text = sn.nextLine();
+		l = text.length();
+		
+		char ch;
+		if (l > 3 && l < 100) {
+			for (int i = 0; i < text.length(); i++) {
+				ch = text.charAt(i);
+				ch = rot(ch);
+				roted += ch;
+			}
+		}
+		System.out.println("Output>>  " + roted);
+
+	}
+
+}
